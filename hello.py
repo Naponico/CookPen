@@ -2,7 +2,6 @@ import sqlite3,os
 from flask import Flask, render_template, request, url_for, flash, redirect,jsonify
 from werkzeug.utils import secure_filename
 import sys
-from PIL import Image
 
 app=Flask(__name__)
 app.config['SECRET_KEY']='22052002';
