@@ -3,10 +3,6 @@
     background-color:rgb(71, 123, 183)!important;
 }
 
-.delete-recipe{
- 
-}
-
 .container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -61,7 +57,6 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
-  background-image:url(../bg.jpg);
 }
 
 html::-webkit-scrollbar-thumb {
@@ -71,7 +66,6 @@ html::-webkit-scrollbar-thumb {
 }
 
 html,body{
-    /* background-image:url(../bg.jpg); */
     background-color:rgb(223, 214, 214);
 }
 

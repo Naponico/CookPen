@@ -9,12 +9,9 @@ function onclickbehaviour() {
             method: "POST",
         }).then(function () { 
             id = selectedcardid.replace("card","")
-            div_to_del = document.getElementById('card' + id)
+            div_to_del = document.getElementById(selectedcardid)
             $('#card'+id).fadeOut(500)
-            setTimeout(function (div_to_del) { 
-                div_to_del.parentNode.removeChild(div_to_del);
-            }, 500,button);
-            
+            location.reload();
         });
     }
 }
@@ -34,7 +31,6 @@ function sendCreateForm() {
                 string_to_send=string_to_send + "," + text
             }
         }
-        console.log(string_to_send)
         let formdata = new FormData();
         formdata.append("allerg",string_to_send)
         formdata.append("name", document.getElementById("inputName").value);
@@ -67,30 +63,12 @@ function handleDragEnd(e) {
 function handleDragStart(e) {
     this.style.opacity = '0.4';
     selectedcardid = this.id
-    console.log(selectedcardid)
 }
 
 function handleDragOver(e) {
     if (e.preventDefault) {
         e.preventDefault();
 }
-
-
-    return false;
-}
-
-function handleDrop(e) {
-    if (e.stopPropagation) {
-        e.stopPropagation(); // stops the browser from redirecting.
-    }
-
-    if (dragSrcEl != this) {
-        dragSrcEl.innerHTML = this.innerHTML;
-        dragSrcEl.setAttribute('value',this.getAttribute('value'))
-        this.innerHTML = e.dataTransfer.getData('text/html');
-        this.setAttribute('value',e.dataTransfer.getData('value'))
-    }
-
     return false;
 }
 
