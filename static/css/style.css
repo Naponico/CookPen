@@ -1,0 +1,90 @@
+
+.card-header{
+    background-color:rgb(71, 123, 183)!important;
+}
+
+.delete-recipe{
+ 
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card{
+    margin: 10px 0px 10px 0px!important;
+}
+
+.carp{
+    padding-bottom: 10em;
+    background-color: rgba(168, 167, 167, 0.302);
+}
+
+.navbar{
+    background-color:rgba(44, 148, 200, 0.758)!important;
+}
+
+.nav-item i {
+
+    color:black;
+}
+.nav-item button{
+    border:none;
+    background:none;
+}
+
+.modal-header{
+    background-color:rgba(44, 148, 200, 0.758)!important;
+}
+
+.card-img-top{
+    max-height:7em;
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
+
+.card-header{
+    max-height: 4em!important;
+    height: 4em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.card-allergene i{
+    color:rgb(179, 37, 255)
+}
+
+html::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+  background-image:url(../bg.jpg);
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgb(95, 124, 240); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border:none;
+}
+
+html,body{
+    /* background-image:url(../bg.jpg); */
+    background-color:rgb(223, 214, 214);
+}
+
+.nav-item{
+    padding: 0px 1em 0px  1em;
+}
+
+.nav-item button{
+    width:3em;
+    height:3em;
+
+}
+.over{
+    border:3px red solid!important;
+    border-radius:1em;
+}

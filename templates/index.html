@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for recette in recettes %}
+        <div  draggable="true" id="card{{recette['id']}}"class="card col-s" style="width: 18rem;">
+            <div class="card-header inline">
+                <h5 class="card-title">{{recette['title']}}</h5>
+            </div>
+            <img class="card-img-top" src="{{url_for('static',filename=recette['filepath'])}}" draggable="false">
+            <div class="card-body">
+                <div class="card-allergene">
+                    {% if recette['allergene'] is not none %}
+                        {% if "Milk" in recette['allergene'] %}
+                            <i class="fa-solid fa-cow" title="Contient du lactose"></i>
+                        {%endif%}
+                        {% if "Gluten" in recette['allergene'] %}
+                            <i class="fa-solid fa-wheat-awn" title="Contient du gluten"></i>
+                        {%endif%}
+                        {% if "Fructose" in recette['allergene'] %}
+                            <i class="fa-solid fa-apple-whole" title="Contient du fructose"></i>
+                        {%endif%}
+                        {% if "Saccharose" in recette['allergene'] %}
+                            <i class="fa-solid fa-cubes-stacked" title="Contient du saccharose"></i>
+                        {%endif%}
+                        {% if "Mais" in recette['allergene'] %}
+                            <i class="fa-solid fa-seedling" title="Contient du maïs"></i>
+                        {%endif%}
+                        {% if "Levure" in recette['allergene'] %}
+                            <i class="fa-solid fa-jar-wheat" title="Contient de la levure"></i>
+                        {%endif%}
+                    {% endif %}
+                </div>
+                <p class="card-text">{{recette['content']}}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <!-- Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Ajouter une recette</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action = "/createrecette" method = "POST" enctype = "json/form-data">  
+            <label for="inputFile" class="form-label">Image de la recette</label>
+            <input id="inputFile" type="file" class="form-control"></input>
+
+            <label class="form-label" for="inputName">Nom de la recette</label>
+            <input class="form-control" id ="inputName" name="name" placeholder="Gnocchis au oignons" type="text"></input>
+
+            <label class="form-label" for="inputContent" >Description de la recette</label>
+            <textarea class="form-control" id="inputContent" name="content" rows="3"></textarea>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveMilk">
+                <label class="form-check-label" for="haveMilk">Contient du lait ou dérivés</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveGluten">
+                <label class="form-check-label" for="haveGluten">Contient du gluten</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveFructose" title="Artichaut,haricots,brocolis,choux,tomates,oignons,courgettes,miel,sirop d'erable,sucre blanc,sirop de mais">
+                <label class="form-check-label" for="haveFructose"title="Artichaut,haricots,brocolis,choux,tomates,oignons,courgettes,miel,sirop d'erable,sucre blanc,sirop de mais">Contient des fruits</label>
+            </div>
+             <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveSaccharose">
+                <label class="form-check-label" for="haveSaccharose">Contient du sucre blanc </label>
+            </div>
+             <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveMais">
+                <label class="form-check-label" for="haveMais">Contient du maïs</label>
+            </div>
+             <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="haveLevure">
+                <label class="form-check-label" for="haveLevure">Contient de la levure</label>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id='createModalClose'class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" onclick="sendCreateForm()" >Creer la recette</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
