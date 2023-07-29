@@ -48,3 +48,12 @@ def createNewRecette():
     conn.commit()
     conn.close()
     return index()
+
+
+@app.route("/<recherche>",methods=['GET'])
+def searchRecette(recherche):
+    conn = get_db_connection()
+    sql='SELECT * FROM recette WHERE recette.title like :search'
+    recettes = conn.execute(sql,{"search":recherche}).fetchall()
+    conn.close()
+    return render_template('index.html',recettes=recettes) 
