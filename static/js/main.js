@@ -1,5 +1,6 @@
 const tocheck=["Milk","Gluten","Fructose","Saccharose","Mais","Levure"]
 var selectedcardid = undefined
+const baseUrl="127.0.0.1:5000/"
 
 function onclickbehaviour() { 
     if (confirm("Voulez-vous supprimez cette recette ?")) {
@@ -11,7 +12,7 @@ function onclickbehaviour() {
             id = selectedcardid.replace("card","")
             div_to_del = document.getElementById(selectedcardid)
             $('#card'+id).fadeOut(500)
-            location.reload();
+            setTimeout(function(){location.reload()},500);
         });
     }
 }
@@ -39,9 +40,28 @@ function sendCreateForm() {
         fetch("/createrecette/", {
             method: "POST",
             body: formdata,
-        });
-        setTimeout(function () { location.reload },1000)
+        }).then(setTimeout(function () { location.reload() },500))
+        
     }
+}
+function searchBar(){
+    search=$('#searchBar');
+    recherche = search.val();
+    if(recherche !=""){
+        let formdata = new FormData();
+        formdata.append("recherche",recherche);
+        fetch("/"+recherche, {
+            method: "GET"
+        }).then(window.location.replace('/'+recherche))
+    }else{
+        divtoshake=document.getElementById("searchBar");
+        divtoshake.classList.add("shakeError");
+        setTimeout(delclass,900,divtoshake,"shakeError")
+    }
+}
+
+function delclass(element,classtoremove){
+    element.classList.remove(classtoremove)
 }
 
 
@@ -58,7 +78,6 @@ function handleDragEnd(e) {
         item.classList.remove('over');
     });
 }
-
 
 function handleDragStart(e) {
     this.style.opacity = '0.4';
@@ -94,3 +113,11 @@ items.forEach(function(item) {
     item.addEventListener('dragend', handleDragEnd, false);
 });
 
+function handleAllergButtonClick(button){
+    if(button.classList.contains("buttonexclude")){
+        button.classList.remove("buttonexclude")
+    }
+    else{
+        button.classList.add("buttonexclude")
+    }
+}

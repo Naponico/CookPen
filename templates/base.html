@@ -13,7 +13,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index')}}">Cook-Pen</a>
+        <a class="navbar-brand" href="{{ url_for('index')}}"><i class="fa-solid fa-utensils"></i> Cook-Pen</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -21,6 +21,22 @@
               </li>
               <li class="nav-item">
                 <button id="delete-recipe"><i class="fa-solid fa-trash"></i></button>
+              </li>
+              <li class="nav-item">
+                <div>
+                   <input id="searchBar"type="text"></input>
+                   <button onclick="searchBar()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>     
+              </li>
+              <li class="nav-item">
+                <div>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-cow" title="Contient du lactose"></i></button>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-wheat-awn" title="Contient du gluten"></i></button>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-apple-whole" title="Contient du fructose"></i></button>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-cubes-stacked" title="Contient du saccharose"></i></button>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-seedling" title="Contient du maïs"></i></button>
+                  <button onclick="handleAllergButtonClick(this)"><i class="fa-solid fa-jar-wheat" title="Contient de la levure"></i></button>
+                </div>
               </li>
             </ul>
         </div>

@@ -1,6 +1,15 @@
-
+:root {
+  --rose-ebony:#563635;
+  --ebony:#5B6057;
+  --reseda-green:#6E9075;
+  --mint:#78C091;
+  --fluo-cyan:#81F05E;
+  --header-color:var(--mint);
+  --error:rgb(201, 67, 67);
+  --error-accent:rgb(255, 180, 94);
+}
 .card-header{
-    background-color:rgb(71, 123, 183)!important;
+    background-color:var(--header-color)!important;
 }
 
 .container{
@@ -18,7 +27,7 @@
 }
 
 .navbar{
-    background-color:rgba(44, 148, 200, 0.758)!important;
+    background-color:var(--reseda-green)!important;
 }
 
 .nav-item i {
@@ -31,7 +40,7 @@
 }
 
 .modal-header{
-    background-color:rgba(44, 148, 200, 0.758)!important;
+    background-color:var(--header-color)!important;
 }
 
 .card-img-top{
@@ -48,7 +57,7 @@
 }
 
 .card-allergene i{
-    color:rgb(179, 37, 255)
+    color:var(--rose-ebony)
 }
 
 html::-webkit-scrollbar {
@@ -66,7 +75,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 html,body{
-    background-color:rgb(223, 214, 214);
+    background-color:var(--ebony)
 }
 
 .nav-item{
@@ -76,9 +85,58 @@ html,body{
 .nav-item button{
     width:3em;
     height:3em;
+    background-color:var(--mint);
+    border-radius: 5em;
+    box-shadow: 0.1em 0.05em var(--fluo-cyan);
+}
 
+.nav-item button:hover{
+    border: 2px var(--fluo-cyan) solid;
+    box-shadow:none!important;
 }
 .over{
     border:3px red solid!important;
     border-radius:1em;
+}
+
+.nav-item input{
+    align-self: center;
+    margin-top: 0.7em;
+    border-radius: 0.2em;
+    box-shadow: none;
+    border: none;
+}
+
+.nav-item button:hover{
+    border: 2px var(--fluo-cyan) solid !important;
+    box-shadow:none!important;
+}
+
+.navbar-brand{
+    margin-left:1em;
+}
+
+.shakeError{
+    animation-name:shakeError;
+    animation-duration: 0.75s;
+    border: 2px var(--error) solid!important;
+    animation-play-state: running;
+}
+
+.buttonexclude{
+    background-color: var(--error)!important;
+    box-shadow: 0.1em 0.05em var(--error-accent)!important;
+}
+
+.buttonexclude:hover{
+    border: 2px var(--error-accent) solid !important;
+    box-shadow:none!important;
+}
+
+@keyframes shakeError{
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
 }
